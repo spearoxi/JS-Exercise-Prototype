@@ -60,22 +60,23 @@ function Airplane(name) {
   }
   
   const romy = new Person('Romy', 29);
-  const jordan = new Person('Bradly', 27);
+  const jordan = new Person('Jordan', 27);
 
-  console.log(romy);
-  console.log(jordan);
+  console.log('Romy', romy);
+  console.log('Jordan', jordan);
 
-  console.log(jordan.eat('tacos'));
-  console.log(jordan.eat('🥪'));
-  console.log(jordan.eat('sushi'));
-  console.log(jordan.eat('pizza'));
+  console.log('1',jordan.eat('tacos'));
+  console.log('2',jordan.eat('🥪'));
+  console.log('3',jordan.eat('sushi'));
+  console.log('4',jordan.eat('pizza'));
   
-  console.log(jordan.stomach);
+  console.log('5',jordan.stomach);
 
   jordan.poop;
-  console.log(jordan.stomach);
+  console.log('6',romy.stomach);
+  romy.poop;
 
-  console.log(jordan.toString());
+  console.log('7',jordan.toString());
   /*
     TASK 2
       - Write a Car constructor that initializes `model` and `milesPerGallon` from arguments.
@@ -103,7 +104,7 @@ function Airplane(name) {
 
   const corvette = new Car('Corvette', 19);
 
-  console.log(corvette.fill(12));
+  console.log('8',corvette.fill(12));
 
   corvette.fill(12);
 
@@ -116,9 +117,22 @@ function Airplane(name) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+ function Baby(name, age, favoriteToy) {
+      Person.call(this, name, age);
+      this.favoriteToy = favoriteToy;
   }
+
+  Baby.prototype = Object.create(Person.prototype);
+
+  Baby.prototype.play = function(){
+    return `Playing with ${this.favoriteToy}`;
+  }
+
+  const baby = new Baby('Franklin', 1.5, 'rubber turtle');
+
+  baby.play;
+  console.log('9',baby.play);
+
  
   
   /* 
